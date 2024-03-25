@@ -1,3 +1,6 @@
+import 'dart:html';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,41 +32,84 @@ class MyApp extends StatelessWidget {
       // home: Text('안녕'),
       // 3. 상중하 구조
       home: Scaffold(
-        // 3-1. 상단
+        // // 3-1. 상단
+        // appBar: AppBar(
+        //   backgroundColor: Colors.lightBlueAccent,
+        //   title: Text('Application', style: TextStyle(
+        //     color: Colors.white
+        //   ),),
+        //   // 좌측
+        //   leading: Icon(Icons.cable),
+        //   // 우측
+        //   actions: [Icon(Icons.cable)],
+        // ),
+        // // 3-2. 중단
+        // // Row - 가로 배치, Column - 새로 배치
+        // body: Center(
+        //   child: SizedBox(
+        //     // color 는 중복될 수 없음
+        //     // decoration: BoxDecoration(
+        //     //   border: Border.all(color: Colors.black)
+        //     // ),
+        //     width: 150, height: 50,
+        //     // margin: EdgeInsets.fromLTRB(20, 10, 10, 20)
+        //     child: IconButton(
+        //       icon: Icon(Icons.star),
+        //       onPressed: (){},
+        //     ),
+        //   ),
+        // ),
+        // // 3-3. 하단
+        // bottomNavigationBar: BottomNavigationBar(
+        //   items: [
+        //     BottomNavigationBarItem(icon: Icon(Icons.phone), label: 'Phone'),
+        //     BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Message'),
+        //     BottomNavigationBarItem(icon: Icon(Icons.contact_page), label: 'Contact')
+        //   ],
+        // ),
         appBar: AppBar(
-          backgroundColor: Colors.lightBlueAccent,
-          title: Text('Application', style: TextStyle(
-            color: Colors.white
-          ),),
-          // 좌측
-          leading: Icon(Icons.cable),
-          // 우측
-          actions: [Icon(Icons.cable)],
-        ),
-        // 3-2. 중단
-        // Row - 가로 배치, Column - 새로 배치
-        body: Center(
-          child: SizedBox(
-            // color 는 중복될 수 없음
-            // decoration: BoxDecoration(
-            //   border: Border.all(color: Colors.black)
-            // ),
-            width: 150, height: 50,
-            // margin: EdgeInsets.fromLTRB(20, 10, 10, 20)
-            child: IconButton(
-              icon: Icon(Icons.star),
-              onPressed: (){},
-            ),
+          backgroundColor: Color.fromRGBO(150, 150, 150, 0.7),
+          leading: IconButton(
+              icon: Icon(Icons.extension),
+              onPressed: (){} ,
           ),
-        ),
-        // 3-3. 하단
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.phone), label: 'Phone'),
-            BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Message'),
-            BottomNavigationBarItem(icon: Icon(Icons.contact_page), label: 'Contact')
+          actions: [
+            IconButton(onPressed: (){}, icon: Icon(Icons.info_outline)),
+            IconButton(onPressed: (){}, icon: Icon(Icons.refresh))
           ],
         ),
+        body: Center(
+            child: SizedBox(
+              width: 1000,
+              child: DataTable(
+                dataRowMinHeight: 50,
+                dataRowMaxHeight: 150,
+                border: TableBorder.all(borderRadius: BorderRadius.all(Radius.circular(10)),width: 1, color: Color.fromRGBO(173, 233, 173, 0.7)),
+                columns: [
+                  DataColumn(label: Text('등장 인물')),
+                  DataColumn(label: Text('이름')),
+                  DataColumn(label: Text('나이')),
+                ],
+                rows: [
+                  DataRow(cells: [
+                    DataCell(Image.asset('android/assets/images/sinjjang.jpg')),
+                    DataCell(TextButton(onPressed: () {}, child: Text('신 짱구'))),
+                    DataCell(Text('5'))
+                  ]),
+                  DataRow(cells: [
+                    DataCell(Image.asset('android/assets/images/chulsu.jpg')),
+                    DataCell(TextButton(onPressed: (){}, child: Text('철수'))),
+                    DataCell(Text('5'))
+                  ]),
+                  DataRow(cells: [
+                    DataCell(Image.asset('android/assets/images/maenggu.webp')),
+                    DataCell(TextButton(onPressed: (){}, child: Text('맹구'))),
+                    DataCell(Text('5'))
+                  ])
+                ],
+              ),
+            )
+        )
       ),
     );
   }
