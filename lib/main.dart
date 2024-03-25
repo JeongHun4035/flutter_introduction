@@ -32,11 +32,30 @@ class MyApp extends StatelessWidget {
         // 3-1. 상단
         appBar: AppBar(
           backgroundColor: Colors.lightBlueAccent,
-          title: Text('Application'),
+          title: Text('Application', style: TextStyle(
+            color: Colors.white
+          ),),
+          // 좌측
+          leading: Icon(Icons.cable),
+          // 우측
+          actions: [Icon(Icons.cable)],
         ),
         // 3-2. 중단
         // Row - 가로 배치, Column - 새로 배치
-        body: Text('안녕'),
+        body: Center(
+          child: SizedBox(
+            // color 는 중복될 수 없음
+            // decoration: BoxDecoration(
+            //   border: Border.all(color: Colors.black)
+            // ),
+            width: 150, height: 50,
+            // margin: EdgeInsets.fromLTRB(20, 10, 10, 20)
+            child: IconButton(
+              icon: Icon(Icons.star),
+              onPressed: (){},
+            ),
+          ),
+        ),
         // 3-3. 하단
         bottomNavigationBar: BottomNavigationBar(
           items: [
