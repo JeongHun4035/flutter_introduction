@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   // runApp : app 구동 명령어
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
         //   ],
         // ),
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(150, 150, 150, 0.7),
+          backgroundColor: Color.fromRGBO(204, 150, 255, 0.7),
           leading: IconButton(
               icon: Icon(Icons.extension),
               onPressed: (){} ,
@@ -78,38 +79,88 @@ class MyApp extends StatelessWidget {
             IconButton(onPressed: (){}, icon: Icon(Icons.refresh))
           ],
         ),
-        body: Center(
-            child: SizedBox(
-              width: 1000,
-              child: DataTable(
-                dataRowMinHeight: 50,
-                dataRowMaxHeight: 150,
-                border: TableBorder.all(borderRadius: BorderRadius.all(Radius.circular(10)),width: 1, color: Color.fromRGBO(173, 233, 173, 0.7)),
-                columns: [
-                  DataColumn(label: Text('등장 인물')),
-                  DataColumn(label: Text('이름')),
-                  DataColumn(label: Text('나이')),
-                ],
-                rows: [
-                  DataRow(cells: [
-                    DataCell(Image.asset('android/assets/images/sinjjang.jpg')),
-                    DataCell(TextButton(onPressed: () {}, child: Text('신 짱구'))),
-                    DataCell(Text('5'))
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Image.asset('android/assets/images/chulsu.jpg')),
-                    DataCell(TextButton(onPressed: (){}, child: Text('철수'))),
-                    DataCell(Text('5'))
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Image.asset('android/assets/images/maenggu.webp')),
-                    DataCell(TextButton(onPressed: (){}, child: Text('맹구'))),
-                    DataCell(Text('5'))
-                  ])
-                ],
-              ),
-            )
-        )
+        // body: Center(
+        //     child: SizedBox(
+        //       width: 1000,
+        //       child: DataTable(
+        //         dataRowMinHeight: 50,
+        //         dataRowMaxHeight: 150,
+        //         border: TableBorder.all(borderRadius: BorderRadius.all(Radius.circular(10)),width: 1, color: Color.fromRGBO(173, 233, 173, 0.7)),
+        //         columns: [
+        //           DataColumn(label: Text('등장 인물')),
+        //           DataColumn(label: Text('이름')),
+        //           DataColumn(label: Text('나이')),
+        //         ],
+        //         rows: [
+        //           DataRow(cells: [
+        //             DataCell(Image.asset('android/assets/images/sinjjang.jpg')),
+        //             DataCell(TextButton(onPressed: () {}, child: Text('신 짱구'))),
+        //             DataCell(Text('5'))
+        //           ]),
+        //           DataRow(cells: [
+        //             DataCell(Image.asset('android/assets/images/chulsu.jpg')),
+        //             DataCell(TextButton(onPressed: (){}, child: Text('철수'))),
+        //             DataCell(Text('5'))
+        //           ]),
+        //           DataRow(cells: [
+        //             DataCell(Image.asset('android/assets/images/maenggu.webp')),
+        //             DataCell(TextButton(onPressed: (){}, child: Text('맹구'))),
+        //             DataCell(Text('5'))
+        //           ])
+        //         ],
+        //       ),
+        //     )
+        // )
+        // body: Row(
+        //   children: [
+        //     // 배율 조정 Flexible 활용! ++ Exapanded는 flex를 1만큼 가진 Fliexible 박스랑 같음
+        //     Flexible(child: Container(color: Colors.blue), flex: 5),
+        //     Flexible(child: Container(color: Colors.green), flex: 5),
+        //     Flexible(child: Container(color: Colors.red), flex: 5),
+        //   ],
+        // ),
+        body: Container(
+          height: 200,
+          padding: EdgeInsets.all(20),
+          child: Row(
+            children: [
+              Image.asset('android/assets/images/jordan.jpg',width: 300),
+              SizedBox(
+                width: 300,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('나이키 조던 시드니', style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    )),
+                    Text('용현동 72', style: TextStyle(
+                      color: Color.fromRGBO(0, 0, 0, 0.5)
+                    ),),
+                    Text('690,000 원', style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15
+                    ),),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border)),
+                        Text('4')
+                      ],
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Color.fromRGBO(204, 150, 255, 0.7),
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.list), label: '전체 목록'),
+            BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: '내 목록'),
+          ],
+        ),
       ),
     );
   }
